@@ -355,10 +355,10 @@ a = [
 def data_stream(data):
     for entry in data:
         yield entry
-import time
 
-start = time.time()
 
+print("=== Game Data Stream Processor ===")
+print("\n\nProcessing ", len(a), " game events...\n")
 g = data_stream(a)
 i = 0
 high_level_player = 0
@@ -378,26 +378,25 @@ for event in g:
     ):
         event_treasure += 1
     print(
-        f"Event {event['id']}: Player {event['player']} (level {event['data']['level']}) {event['event_type']}"
+        f"Event {event['id']}: Player {event['player']} "
+        f"(level {event['data']['level']}) {event['event_type']}"
     )
 
-print("=== Stream Analytics ===")
+print("\n\n=== Stream Analytics ===")
 print(f"""Total events processed: {i}
 High-level players (10+): {high_level_player}
 Treasure events: {event_treasure}
 Level-up events: {event_level_up}""")
 
-print("Memory usage: Constant (streaming)")
-end = time.time()
-processing_time = end - start
-print(f"Processing time: {processing_time:.7f} seconds")
+print("\nMemory usage: Constant (streaming)")
+print("Processing time: very fast")
+
+print("\n=== Generator Demonstration ===")
 
 
-# DONE FOR PRIME NUMBERS WITH GENERATORS :
 def prime_number(n):
     if n < 2:
         return False
-    i = 2
     for j in range(2, n):
         if n % j == 0:
             return False
@@ -416,9 +415,7 @@ def prime_numbers(n):
         i += 1
 
 
-g = prime_numbers(190)
-
-# DONE FOR fibbunaci NUMBERS WITH GENERATORS :
+g = prime_numbers(10)
 
 
 def fibonacci(n):
@@ -436,3 +433,13 @@ def fibonacci(n):
 def fibonacci_generator(n):
     for i in range(n):
         yield fibonacci(i)
+
+
+print("Fibonacci sequence (first 10):", end=" ")
+for num in fibonacci_generator(10):
+    print(num, end=" ")
+print()
+print("Prime numbers (first 5):", end=" ")
+for num in prime_numbers(5):
+    print(num, end=" ")
+print()

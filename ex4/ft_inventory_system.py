@@ -81,7 +81,11 @@ inventory = {
         "pixel_sword": {"type": "weapon", "value": 150, "rarity": "common"},
         "quantum_ring": {"type": "accessory", "value": 500, "rarity": "rare"},
         "health_byte": {"type": "consumable", "value": 25, "rarity": "common"},
-        "data_crystal": {"type": "material", "value": 1000, "rarity": "legendary"},
+        "data_crystal": {
+            "type": "material",
+            "value": 1000,
+            "rarity": "legendary"
+            },
         "code_bow": {"type": "weapon", "value": 200, "rarity": "uncommon"},
     },
 }
